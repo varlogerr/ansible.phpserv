@@ -1,3 +1,6 @@
 [submodule "roles/common"]
 	path = roles/common
 	url = https://github.com/varlogerr/ansible.role.common.git
+[submodule "roles/toolbox"]
+	path = roles/toolbox
+	url = https://github.com/varlogerr/ansible.role.toolbox.git
