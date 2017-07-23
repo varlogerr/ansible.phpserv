@@ -1,4 +1,0 @@
----
-the_user: vagrant # default user
-the_user_group : "{{ the_user }}" # default user group
-apache_doc_root: "/home/{{ the_user }}/Projects/php/public" # apache docroot directory path
