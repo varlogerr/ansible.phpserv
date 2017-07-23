@@ -1,0 +1,3 @@
+---
+the_user_dir: "/home/{{ the_user }}"
+the_user_conf_dir: "{{ the_user_dir }}/.my_conf"

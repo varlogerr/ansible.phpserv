@@ -1,0 +1,56 @@
+---
+- name: download mysql installer
+  get_url:
+    url: https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb
+    dest: /tmp/mysql.deb
+    mode: 0777
+    force: yes
+
+- name: add mysql ppa
+  apt: deb=/tmp/mysql.deb
+
+- name: update cache
+  shell: apt-get update
+
+- name: ensure mysql server / client installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-server
+    - mysql-client
+
+- name: upgrade mysql
+  shell: 'mysql_upgrade --force'
+
+- name: start mysql service
+  service: name=mysql state=started enabled=yes
+
+- name: ensure python mysql bindings installed
+  apt: name=python-mysqldb state=installed
+
+- name: create mysql user
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: '*.*:ALL'
+    host: '%'
+    state: present
+
+- name: create mysql config directory
+  file:
+    path:  /etc/mysql/mysql.conf.d
+    state: directory
+    owner: root
+    group: root
+    mode:  0644
+
+- name: create mysql config file
+  template:
+    src: mysqld.cnf.j2
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+  notify: restart mysql
+
+- name: create mysql config file
+  template:
+    src: mysqld.cnf.j2
+    dest: /etc/mysql/conf.d/mysqld.cnf
+  notify: restart mysql

@@ -1,0 +1,13 @@
+---
+- name: add git ppa
+  lineinfile:
+    path: /etc/apt/sources.list.d/git.list
+    create: yes
+    line: 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main'
+    state: present
+
+- name: update cache
+  shell: apt-get update
+
+- name: ensure git installed
+  apt: name=git state=latest force=yes

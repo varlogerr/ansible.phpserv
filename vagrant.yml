@@ -1,0 +1,21 @@
+---
+- hosts: local
+  become: yes
+  roles:
+  - common
+  - toolbox
+  - git
+  - samba
+  - php
+  - apache
+  - mysql
+  - nodejs
+  - mongodb
+  # vars: # variables that can be overriden
+  #   the_user: vagrant # default user
+  #   the_user_group: vagrant # default user group
+  #   samba_share_dir: /home/vagrant/Share # samba share directory path
+  #   apache_doc_root: "/home/vagrant/Projects/php/public" # apache docroot directory path
+  #   mysql_user = vagrant
+  #   mysql_password = vagrant
+

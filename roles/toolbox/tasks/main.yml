@@ -1,0 +1,12 @@
+---
+- name: ensure basic toolbox installed
+  apt: name="{{ item }}" state=present force=yes
+  with_items:
+    - nano
+    - vim
+    - curl
+    - htop
+    - zip
+    - dtrx
+    - tree
+    - mc

@@ -1,0 +1,6 @@
+---
+- name: add nodejs ppa
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+- name: install nodejs
+  apt: name=nodejs state=latest force=yes

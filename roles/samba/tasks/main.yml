@@ -1,0 +1,20 @@
+- name: ensure samba shared directory exists
+  file:
+    path:  "{{ samba_share_dir }}"
+    state: directory
+    owner: "{{ the_user }}"
+    group: "{{ the_user_group }}"
+    mode:  0755
+
+- name: ensure samba installed
+  apt: name=samba state=latest
+
+- name: ensure samba starts on boot
+  service: name=smbd state=started enabled=yes
+
+- name: ensure custom samba config file exists
+  template: src=my_samba.conf.j2 dest=/etc/samba/my_smbd.conf
+
+- name: ensure custom samba config included to samba config
+  lineinfile: dest=/etc/samba/smb.conf line='include = /etc/samba/my_smbd.conf'
+  notify: restart smbd

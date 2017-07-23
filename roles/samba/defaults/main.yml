@@ -1,0 +1,4 @@
+---
+the_user: vagrant # default user
+the_user_group : "{{ the_user }}" # default user group
+samba_share_dir: "/home/{{ the_user }}/Share" # samba share directory path
