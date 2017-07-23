@@ -10,3 +10,18 @@
 [submodule "roles/samba"]
 	path = roles/samba
 	url = https://github.com/varlogerr/ansible.role.samba.git
+[submodule "roles/php"]
+	path = roles/php
+	url = https://github.com/varlogerr/ansible.role.php.git
+[submodule "roles/apache"]
+	path = roles/apache
+	url = https://github.com/varlogerr/ansible.role.apache.git
+[submodule "roles/mysql"]
+	path = roles/mysql
+	url = https://github.com/varlogerr/ansible.role.mysql.git
+[submodule "roles/nodejs"]
+	path = roles/nodejs
+	url = https://github.com/varlogerr/ansible.role.nodejs.git
+[submodule "roles/mongodb"]
+	path = roles/mongodb
+	url = https://github.com/varlogerr/ansible.role.mongodb.git
